@@ -1,1 +1,3 @@
 /.idea
+/ExternalFiles/vendor
+/ExternalFiles/composer.lock
