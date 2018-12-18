@@ -31,9 +31,7 @@ class Downloader extends Main
     public function getPages(array $pages)
     {
         foreach ($pages as $siteName => $siteUrl) {
-            $this->curl->download($siteUrl, $this->pathToCacheFile($siteName));
+            $this->curl->download($siteUrl, $this->pathToFile($siteName));
         }
     }
-
-
 }

@@ -14,9 +14,9 @@ $sites = [
 ];
 
 $objDownloader = new Downloader();
-//$objDownloader->getPages($sites);
+$objDownloader->getPages($sites);
 
 $objParser = new Parser();
-$test  =  $objParser->extractNumbers();
+$test = $objParser->init();
 
 var_dump($test);

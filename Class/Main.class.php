@@ -12,11 +12,16 @@ class Main
      * Zwraca pełną ścieżkę pliku w cache.
      *
      * @param string $fileName
+     * @param string $director
      *
      * @return string
      */
-    protected function pathToCacheFile(string $fileName): string
+    protected function pathToFile(string $fileName, $director = 'cache'): string
     {
-        return cacheFiles . $fileName;
+        if ($director === 'cache') {
+            return FilesDirector . '/cache/' . $fileName;
+        } elseif ($director === 'json') {
+            return FilesDirector . '/json/' . $fileName;
+        }
     }
 }
