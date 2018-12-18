@@ -13,10 +13,10 @@ $sites = [
     'eurojackpot' => 'http://www.lotto.pl/eurojackpot/wyniki-i-wygrane'
 ];
 
+// pobieranie stron do cache
 $objDownloader = new Downloader();
 $objDownloader->getPages($sites);
 
+// parsowanie stron i generowanie plikow json
 $objParser = new Parser();
-$test = $objParser->init();
-
-var_dump($test);
+$objParser->init();
