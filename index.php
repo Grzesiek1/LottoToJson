@@ -7,4 +7,11 @@
  */
 require_once('head.php');
 
-$obj = new Downloader();
+$sites = [
+    'elgordo' => 'https://www.elgordo.com/results/euromillonariaen.asp',
+    'lotto' => 'http://www.lotto.pl/lotto/wyniki-i-wygrane',
+    'eurojackpot' => 'http://www.lotto.pl/eurojackpot/wyniki-i-wygrane'
+];
+
+$objDownloader = new Downloader();
+$objDownloader->getPages($sites);

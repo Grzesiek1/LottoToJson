@@ -11,9 +11,14 @@ use \Curl\Curl;
 class Downloader
 {
     /**
+     * Ścieżka do cache curl
+     */
+    const cacheCurl = __DIR__ . '/../Files/cache/';
+
+    /**
      * @var Object Curl
      */
-    public $curl;
+    protected $curl;
 
     /**
      * Downloader constructor.
@@ -23,8 +28,27 @@ class Downloader
         $this->curl = new Curl();
     }
 
+    /**
+     * Pobiera listę stron podaną w tablicy i zapisuje do plików.
+     *
+     * @param array $pages ['pageName' => 'pageUrl']
+     */
     public function getPages(array $pages)
     {
+        foreach ($pages as $siteName => $siteUrl) {
+            $this->curl->download($siteUrl, $this->pathToCacheCurl($siteName));
+        }
+    }
 
+    /**
+     * Zwraca pełną ścieżkę dla pliku cache curl.
+     * 
+     * @param string $fileName
+     *
+     * @return string
+     */
+    protected function pathToCacheCurl(string $fileName): string
+    {
+        return self::cacheCurl . $fileName;
     }
 }
