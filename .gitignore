@@ -1,3 +1,5 @@
 /.idea
 /ExternalFiles/vendor
 /ExternalFiles/composer.lock
+/Files/cache/*
+/Files/json/*

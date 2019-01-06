@@ -13,10 +13,32 @@ $sites = [
     'eurojackpot' => 'http://www.lotto.pl/eurojackpot/wyniki-i-wygrane'
 ];
 
-// pobieranie stron do cache
-$objDownloader = new Downloader();
-$objDownloader->getPages($sites);
+/*
+ * Wersja z konsoli cmd
+ */
+if (php_sapi_name() == "cli") {
+    print "Aby 'pobrać' wciśnij 1, aby 'przetworzyć' wciśnij 2, aby 'zakończyć' wciśnij 3\nWybór potwierdź ENTER\n";
 
+    while (true) {
+        $key = fgetc(STDIN);
+        if ($key == 1) {
+            (new Downloader())->getPages($sites);
+            print "Pobrano\n";
+        } elseif ($key == 2) {
+            (new Main())->init();
+            print "Przetworzono\n";
+        } elseif ($key == 3) {
+            print "Zakończono\n";
+            die;
+        }
+    }
+}
+
+/*
+ * Wersja z przeglądarki
+ */
+// pobieranie stron do cache
+(new Downloader())->getPages($sites);
 // parsowanie stron i generowanie plikow json
-$objParser = new Parser();
-$objParser->init();
+(new Main())->init();
+print 'Uruchomiono pobieranie i przetwarzanie. Zakończono.';

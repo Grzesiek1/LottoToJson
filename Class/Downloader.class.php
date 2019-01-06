@@ -8,7 +8,7 @@
 
 use \Curl\Curl;
 
-class Downloader extends Main
+class Downloader
 {
     /**
      * @var Object Curl
@@ -26,13 +26,13 @@ class Downloader extends Main
     /**
      * Pobiera listę stron podaną w tablicy i zapisuje do plików.
      *
-     * @param array $pages ['pageName' => 'pageUrl']
+     * @param array $pages ['pageName' => 'pageUrl'] - Nazwa i url strony do pobrania
      */
     public function getPages(array $pages)
     {
         foreach ($pages as $siteName => $siteUrl) {
             $this->curl->setOpt(CURLOPT_FOLLOWLOCATION, true);
-            $this->curl->download($siteUrl, $this->pathToFile($siteName));
+            $this->curl->download($siteUrl, (new FileHelper)->pathToFile($siteName));
         }
     }
 }
