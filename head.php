@@ -6,6 +6,5 @@
  * Time: 01:55
  */
 error_reporting(E_ALL);
-define('FilesDirector', __DIR__ . '/Files');
-
+const PROJECT_DIR = __DIR__;
 require_once('ExternalFiles/vendor/autoload.php');

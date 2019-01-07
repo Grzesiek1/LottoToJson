@@ -44,12 +44,12 @@ class Lotto extends aParser
                     $ball++; // kolejna kula w grze
                 }
                 $this->setMemory('ball', $ball);
-                $result[] = $item->nodeValue; // Dodajemy kolejny wynik danej dla danej gry
+                $result[] = $item->nodeValue; // Dodajemy kolejny wynik dla danej gry
 
-                if ($ball === self::BallsInGame[$game]) {
+                if ($ball === self::BALLS_IN_GAME[$game]) {
                     // Zebrano wszystkie kule w danym typie gry losowej.
                     // Dopisujemy wyniki do tabeli końcowej
-                    // Czyścimy pamięć podręczną dla aktualnej gry (typ gry, date gry, numer kuli)
+                    // Czyścimy pamięć podręczną dla aktualnej gry (czyścimy typ gry, date gry, numer kuli)
                     $return[$game][$dateGame] = implode(',', $result);
                     unset($result);
                     $this->clearMemory();

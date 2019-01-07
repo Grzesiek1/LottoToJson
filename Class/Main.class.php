@@ -11,7 +11,7 @@ class Main
     /**
      * Lista dostępnych parserów
      */
-    const ParsersList = ['Elgordo', 'EuroJackPot', 'Lotto'];
+    const PARSERS_LIST = ['Elgordo', 'EuroJackPot', 'Lotto'];
 
     /**
      * @var string - Nazwa parsera
@@ -77,7 +77,7 @@ class Main
      */
     private function setParser(string $parser)
     {
-        if (in_array($parser, self::ParsersList)) {
+        if (in_array($parser, self::PARSERS_LIST)) {
             $this->parser = $parser;
         } else {
             throw new Exception('Incorrect parser class');

@@ -8,6 +8,8 @@
 
 class FileHelper
 {
+    const FILES_DIRECTOR = PROJECT_DIR . '\Files';
+
     /**
      * Zwraca dane z pliku w postaci string (BEZ UŻYCIA FOPEN!)
      *
@@ -33,9 +35,9 @@ class FileHelper
     public function pathToFile(string $fileName, string $director = 'cache'): string
     {
         if ($director === 'cache') {
-            return FilesDirector . '/cache/' . $fileName;
+            return self::FILES_DIRECTOR . "\cache\\" . $fileName;
         } elseif ($director === 'json') {
-            return FilesDirector . '/json/' . $fileName;
+            return self::FILES_DIRECTOR . '\json\\' . $fileName;
         }
     }
 
@@ -46,7 +48,7 @@ class FileHelper
      */
     public function getFilesList(): array
     {
-        $scanDir = scandir(FilesDirector . '/cache/');
+        $scanDir = scandir(self::FILES_DIRECTOR . '\cache\\');
         $directory = array_slice($scanDir, 2);
         return $directory;
     }

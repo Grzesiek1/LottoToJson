@@ -11,7 +11,7 @@ abstract class aParser implements iParser
     /**
      * @var array - Ile liczb posiada dany typ gry
      */
-    const BallsInGame = [
+    const BALLS_IN_GAME = [
         'lotto' => 6,
         'lottoPlus' => 6,
         'lottoSzansa' => 7,
@@ -19,9 +19,9 @@ abstract class aParser implements iParser
     ];
 
     /**
-     * @var string - Typ gry
+     * @var string - Zmienna pomocnicza dla metod od pamięci (aParser::setMemory(), aParser::getMemory(), aParser::clearMemory())
      */
-    protected static $type;
+    protected static $memory;
 
     /**
      * @var object FileHelper
@@ -44,7 +44,7 @@ abstract class aParser implements iParser
      */
     protected function setMemory(string $var, $val)
     {
-        self::$type[$var] = $val;
+        self::$memory[$var] = $val;
     }
 
     /**
@@ -56,8 +56,8 @@ abstract class aParser implements iParser
      */
     protected function getMemory(string $var)
     {
-        if (isset(self::$type[$var])) {
-            return self::$type[$var];
+        if (isset(self::$memory[$var])) {
+            return self::$memory[$var];
         } else {
             return false;
         }
@@ -68,6 +68,6 @@ abstract class aParser implements iParser
      */
     protected function clearMemory()
     {
-        self::$type = [];
+        self::$memory = [];
     }
 }

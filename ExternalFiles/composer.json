@@ -28,7 +28,8 @@
             "Curl\\": "src/Curl/"
         },
         "classmap": [
-            "../Class/"
+            "../Class/",
+            "../Test/"
         ]
     }
 }
