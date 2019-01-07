@@ -8,7 +8,15 @@
 
 class FileHelper
 {
-    const FILES_DIRECTOR = PROJECT_DIR . '\Files';
+    /**
+     * Ścieżka do przechowywanych plików cache
+     */
+    const FILES_CACHE = PROJECT_DIR . '/Files/cache/';
+
+    /**
+     * Ścieżka do przechowywanych plików json
+     */
+    const FILES_JSON = PROJECT_DIR . '/Files/json/';
 
     /**
      * Zwraca dane z pliku w postaci string (BEZ UŻYCIA FOPEN!)
@@ -35,9 +43,9 @@ class FileHelper
     public function pathToFile(string $fileName, string $director = 'cache'): string
     {
         if ($director === 'cache') {
-            return self::FILES_DIRECTOR . "\cache\\" . $fileName;
+            return self::FILES_CACHE . $fileName;
         } elseif ($director === 'json') {
-            return self::FILES_DIRECTOR . '\json\\' . $fileName;
+            return self::FILES_JSON . $fileName;
         }
     }
 
@@ -48,7 +56,7 @@ class FileHelper
      */
     public function getFilesList(): array
     {
-        $scanDir = scandir(self::FILES_DIRECTOR . '\cache\\');
+        $scanDir = scandir(self::FILES_CACHE);
         $directory = array_slice($scanDir, 2);
         return $directory;
     }
